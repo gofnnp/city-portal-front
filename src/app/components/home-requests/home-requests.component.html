@@ -1,0 +1,20 @@
+<div class="component2">
+    <div *ngFor="let request of requests" class="response_block">
+        <div class="blackout">
+            <div class="response_text">
+                <div class="title_text">
+                    <p class="title">{{request.topic}}</p>
+                    <div class="date_category">
+                        <p class="date">{{request.date_create}}</p>
+                        <p class="category">Категория: {{request.category}}</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="description">{{request.description}}</p>
+
+                <div class="button_request">Проблема {{request.id}}</div>
+            </div>
+        </div>
+    </div>
+</div>
