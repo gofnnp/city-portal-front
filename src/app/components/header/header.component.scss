@@ -142,9 +142,7 @@
                     height: 56px;
                     border: 1px solid #E2E2E2;
                     border-radius: 4px;
-                    &.ng-invalid {
-                        border-color: red;
-                    }
+                    
                 }
             }
         }
@@ -158,6 +156,12 @@
             font-size: 14px;
             color: #fff;
             text-transform: uppercase;
+        }
+        .ng-submitted .ng-invalid {
+            border-color: red;
+        }
+        .ng-touched.ng-invalid {
+            border-color: red !important;
         }
     }
 }
