@@ -1,0 +1,27 @@
+<app-header-lk></app-header-lk>
+
+<div class="lk-container">
+    <div class="lk-container__menu">
+        <span>Меню</span>
+        <div class="lk-container__menu-items">
+            <div
+                *ngFor="let item of menuItems"
+                class="lk-container__menu-item"
+                [ngClass]="{
+                    'lk-container__menu-item': true,
+                    'active': item.code === currentPage
+                }"
+                (click)="changePage(item.code)"
+            >
+                {{item.field}}
+            </div>
+        </div>
+    </div>
+    <div class="lk-container__page" [ngSwitch]="currentPage">
+        <div class="lk-container__page-header">
+            {{findMenuItem(currentPage).field}}
+        </div>
+        <app-create-request *ngSwitchCase="1"></app-create-request>
+        <app-request-list *ngSwitchCase="2"></app-request-list>
+    </div>
+</div>

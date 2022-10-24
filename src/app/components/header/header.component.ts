@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,11 @@ export class HeaderComponent implements OnInit {
   signUpForm!: FormGroup;
   signInForm!: FormGroup;
 
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {
     this.signUpForm = new FormGroup({
       "last_name": new FormControl("", Validators.required),
       "first_name": new FormControl("", Validators.required),
@@ -66,7 +71,16 @@ export class HeaderComponent implements OnInit {
     const userData = this.signInForm.value
     this.http.post('http://78.85.18.10:5005/auth', userData).subscribe(
       {
-        next: (data: any) => console.log(data),
+        next: (data: any) => {
+          if (data.code === 1) {
+            this.messageService.add({severity:'error', summary: 'Ошибка!', detail: data.message});
+            return;
+          }
+          this.messageService.add({severity:'success', summary: 'Авторизация прошла успешно!'});
+          this.router.navigate(['/lk']);
+          
+          console.log(data)
+        },
         error: (error) => console.error(error)
       }
     );

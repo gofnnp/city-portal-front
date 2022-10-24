@@ -13,10 +13,20 @@ import { HomeRequestsComponent } from './components/home-requests/home-requests.
 import { HttpClientModule }   from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LkComponent } from './pages/lk/lk.component';
+import { HeaderLkComponent } from './components/header-lk/header-lk.component';
+import { CreateRequestComponent } from './pages/lk/create-request/create-request.component';
+import { RequestListComponent } from './pages/lk/request-list/request-list.component';
+import {MatButtonModule} from '@angular/material/button';
+import {TableModule} from 'primeng/table';
 
 const appRoutes: Routes =[
   { path: '', component: HomeComponent},
   { path: 'auth', component: AuthComponent },
+  { path: 'lk', component: LkComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -28,16 +38,24 @@ const appRoutes: Routes =[
     AuthComponent,
     InfoProcessComponent,
     HomeRequestsComponent,
-    FooterComponent
+    FooterComponent,
+    LkComponent,
+    HeaderLkComponent,
+    CreateRequestComponent,
+    RequestListComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastModule,
+    MatButtonModule,
+    TableModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

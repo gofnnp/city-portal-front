@@ -1,0 +1,44 @@
+<div class="create-request">
+  <form [formGroup]="createRequestForm" (ngSubmit)="onSubmit()">
+    <div class="create-request__input-container">
+      <label class="required" for="topic">Тема</label>
+      <input
+        id="topic"
+        type="text"
+        formControlName="topic"
+        placeholder="Краткое описание"
+      />
+    </div>
+    <div class="create-request__input-container">
+      <label class="required" for="category">Категория</label>
+      <!-- Cделать select -->
+      <input
+        id="category"
+        type="text"
+        formControlName="category"
+        placeholder=""
+      />
+    </div>
+    <div class="create-request__input-container">
+      <label class="required" for="decription">Описание</label>
+      <input
+        id="decription"
+        type="text"
+        formControlName="description"
+        placeholder="Напишите развёрнуто"
+      />
+    </div>
+    <div class="create-request__input-container custom-inputfile">
+      <p>Выберите изображение</p>
+      <label for="image">+</label>
+      <input
+        id="image"
+        type="file"
+        formControlName="url_img"
+        placeholder=""
+        (change)="onFileChange($event)"
+      />
+    </div>
+    <button mat-flat-button color="primary" type="submit">Подать</button>
+  </form>
+</div>
