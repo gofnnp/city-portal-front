@@ -30,14 +30,17 @@
     </div>
     <div class="create-request__input-container custom-inputfile">
       <p>Выберите изображение</p>
-      <label for="image">+</label>
-      <input
-        id="image"
-        type="file"
-        formControlName="url_img"
-        placeholder=""
-        (change)="onFileChange($event)"
-      />
+      <div style="display: flex;">
+        <img *ngIf="previewImgSrc" src="{{previewImgSrc}}" alt="Превью" class="preview-image">
+        <label for="image" id="add-img-label">+</label>
+        <input
+          id="image"
+          type="file"
+          formControlName="url_img"
+          placeholder=""
+          (change)="onFileChange($event)"
+        />
+      </div>
     </div>
     <button mat-flat-button color="primary" type="submit">Подать</button>
   </form>

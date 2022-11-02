@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateRequestComponent implements OnInit {
   createRequestForm!: FormGroup;
+  previewImgSrc = ''
 
   constructor() { }
 
@@ -26,6 +27,11 @@ export class CreateRequestComponent implements OnInit {
       this.createRequestForm.patchValue({
         fileSource: file
       });
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.previewImgSrc = String(reader.result) || '';
+      };
     }
   }
 
